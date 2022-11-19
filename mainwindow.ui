@@ -6,9 +6,16 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>313</width>
-    <height>463</height>
+    <width>358</width>
+    <height>503</height>
    </rect>
+  </property>
+  <property name="palette">
+   <palette>
+    <active/>
+    <inactive/>
+    <disabled/>
+   </palette>
   </property>
   <property name="windowTitle">
    <string>Simple Calculator</string>
@@ -17,6 +24,12 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget {
+background-color: qlineargradient(spread:pad, x1:0.953944, y1:0.977, x2:0, y2:0, stop:0 rgba(1, 83, 157, 255), stop:1 rgba(238, 164, 127, 255))
+
+}</string>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
      <widget class="QLabel" name="resultShow">
@@ -28,12 +41,27 @@
       </property>
       <property name="font">
        <font>
-        <family>Bahnschrift Light Condensed</family>
-        <pointsize>12</pointsize>
+        <family>Arial Narrow</family>
+        <pointsize>16</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QLabel {
+color: rgb(252, 246, 246);
+
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+
+padding-right: 1px;
+
+border-style: none;
+border-radius: 1px;
+border-width: 1px;
+border-color: rgb(252, 237, 218);
+
+}</string>
+      </property>
       <property name="text">
-       <string>243+95 =</string>
+       <string>243+95 = </string>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -51,11 +79,25 @@
       <property name="font">
        <font>
         <family>Arial Narrow</family>
-        <pointsize>24</pointsize>
+        <pointsize>30</pointsize>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit {
+color: rgb(252, 246, 246);
+
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(0, 85, 255, 0), stop:1 rgba(50, 255, 255, 0));
+
+padding-right: 1px;
+
+border: none;
+
+
+}
+</string>
+      </property>
       <property name="text">
-       <string>0</string>
+       <string>338</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -77,12 +119,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>-</string>
@@ -99,12 +152,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>5</string>
@@ -121,12 +185,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>%</string>
@@ -143,12 +218,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>AC</string>
@@ -165,12 +251,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>7</string>
@@ -187,12 +284,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>3</string>
@@ -209,12 +317,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>x</string>
@@ -231,12 +350,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>9</string>
@@ -253,12 +383,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>=</string>
@@ -275,12 +416,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>4</string>
@@ -297,12 +449,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>+/-</string>
@@ -319,12 +482,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>+</string>
@@ -341,12 +515,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>8</string>
@@ -363,12 +548,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>/</string>
@@ -385,12 +581,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>6</string>
@@ -407,12 +614,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>2</string>
@@ -429,12 +647,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>.</string>
@@ -451,12 +680,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>0</string>
@@ -473,12 +713,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>1</string>
@@ -495,12 +746,23 @@
         </property>
         <property name="font">
          <font>
-          <family>Bahnschrift Light</family>
-          <pointsize>12</pointsize>
+          <family>Arial Black</family>
+          <pointsize>14</pointsize>
          </font>
         </property>
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">QPushButton{
+background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
+color: rgb(252, 246, 246);
+border-width: 1px;
+border-radius: 5px;
+border-color: rgb(252, 237, 218);
+border-style: groove;
+}
+</string>
         </property>
         <property name="text">
          <string>X^2</string>
@@ -511,6 +773,24 @@
     </item>
    </layout>
   </widget>
+  <action name="actionStyle_1">
+   <property name="text">
+    <string>Style 1</string>
+   </property>
+   <property name="shortcutContext">
+    <enum>Qt::WidgetWithChildrenShortcut</enum>
+   </property>
+  </action>
+  <action name="actionStyle_2">
+   <property name="text">
+    <string>Style 2</string>
+   </property>
+  </action>
+  <action name="actionStyle_3">
+   <property name="text">
+    <string>Style 3</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
