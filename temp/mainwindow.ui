@@ -28,7 +28,7 @@
   </property>
   <property name="windowIcon">
    <iconset resource="icons.qrc">
-    <normaloff>:/resources/icons/app_icon.png</normaloff>:/resources/icons/app_icon.png</iconset>
+    <normaloff>:/icons/resources/icons/app_icon.png</normaloff>:/icons/resources/icons/app_icon.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -52,7 +52,7 @@ background-color: qlineargradient(spread:pad, x1:0.953944, y1:0.977, x2:0, y2:0,
       <property name="font">
        <font>
         <family>Arial Narrow</family>
-        <pointsize>18</pointsize>
+        <pointsize>17</pointsize>
        </font>
       </property>
       <property name="styleSheet">
@@ -71,7 +71,7 @@ border-color: rgb(252, 237, 218);
 }</string>
       </property>
       <property name="text">
-       <string>0</string>
+       <string>31134 + =</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -248,7 +248,7 @@ QPushButton:pressed{
         </property>
         <property name="icon">
          <iconset resource="icons.qrc">
-          <normaloff>:/resources/icons/backspace_icon.png</normaloff>:/resources/icons/backspace_icon.png</iconset>
+          <normaloff>:/icons/resources/icons/backspace_icon.png</normaloff>:/icons/resources/icons/backspace_icon.png</iconset>
         </property>
         <property name="iconSize">
          <size>
