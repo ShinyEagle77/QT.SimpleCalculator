@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/icons/app_icon.png</file>
+        <file>resources/icons/backspace_icon.png</file>
+    </qresource>
+</RCC>
