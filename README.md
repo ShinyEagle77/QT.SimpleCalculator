@@ -1,7 +1,8 @@
 ## Simple Calculator
 
 ### Current state of the program  
-![image](https://user-images.githubusercontent.com/83186959/202871085-85f9cb8a-ee8b-4146-b09b-be5ce0838156.png)"
+![image](https://user-images.githubusercontent.com/83186959/204900946-7bc402fc-b1aa-4e04-af40-fa9a726c3281.png)
+
 
 #### To-do:  
 Functionality,  
