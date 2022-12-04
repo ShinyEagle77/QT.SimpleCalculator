@@ -15,10 +15,22 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+public slots:
+    void digits_numbers();
+    void binaryOp();
+    void multipleOp();
+    void percentOp();
+
+    void commaOp();
+    void changeSign();
+
+    void equalOp();
+
+    void backspace();
+    void clearAll();
+
 private:
     Ui::MainWindow *ui;
-
-private slots:
 
 };
 #endif // MAINWINDOW_H
