@@ -79,7 +79,7 @@ border-color: rgb(252, 237, 218);
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="finalResult">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
         <horstretch>0</horstretch>
@@ -993,6 +993,7 @@ QPushButton:pressed{
     </item>
    </layout>
   </widget>
+  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionStyle_1">
    <property name="text">
     <string>Style 1</string>
