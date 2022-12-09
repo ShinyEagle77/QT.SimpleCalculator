@@ -17,17 +17,15 @@ public:
 
 public slots:
     void digits_numbers();
-    void binaryOp();
-    void multipleOp();
-    void percentOp();
-
-    void commaOp();
-    void changeSign();
+    void mathOps();
+    void additionalOps();
 
     void equalOp();
 
     void backspace();
     void clearAll();
+
+    void displayOnLabel();
 
 private:
     Ui::MainWindow *ui;

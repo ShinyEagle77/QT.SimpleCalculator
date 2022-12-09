@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton_2, SIGNAL(clicked()), SLOT(digits_numbers()));
     connect(ui->pushButton_3, SIGNAL(clicked()), SLOT(digits_numbers()));
     connect(ui->pushButton_4, SIGNAL(clicked()), SLOT(digits_numbers()));
-    connect(ui->pushButton_5, SIGNAL(clicked()), SLOT(digits_numbers()));
+    connect(ui->pushButton_5, SIGNAL(clicked()), SLOT(digits_numbers()));               // in one container (enum)
     connect(ui->pushButton_6, SIGNAL(clicked()), SLOT(digits_numbers()));
     connect(ui->pushButton_7, SIGNAL(clicked()), SLOT(digits_numbers()));
     connect(ui->pushButton_8, SIGNAL(clicked()), SLOT(digits_numbers()));
@@ -21,18 +21,17 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton_ac, SIGNAL(clicked()), SLOT(clearAll()));
     connect(ui->pushButton_backspace, SIGNAL(clicked()), SLOT(backspace()));
 
-    connect(ui->pushButton_plus, SIGNAL(clicked()), SLOT(binaryOp()));
-    connect(ui->pushButton_minus, SIGNAL(clicked()), SLOT(binaryOp()));
+    connect(ui->pushButton_plus, SIGNAL(clicked()), SLOT(displayOnLabel()));
+    connect(ui->pushButton_minus, SIGNAL(clicked()), SLOT(mathOps()));
+    connect(ui->pushButton_multiple, SIGNAL(clicked()), SLOT(mathOps()));               // in one container (enum)
+    connect(ui->pushButton_divide, SIGNAL(clicked()), SLOT(mathOps()));
 
-    connect(ui->pushButton_multiple, SIGNAL(clicked()), SLOT(multipleOp()));
-    connect(ui->pushButton_divide, SIGNAL(clicked()), SLOT(multipleOp()));
-
-    connect(ui->pushButton_changeSign, SIGNAL(clicked()), SLOT(changeSign()));
-
-    connect(ui->pushButton_dot, SIGNAL(clicked()), SLOT(commaOp()));
-    connect(ui->pushButton_percent, SIGNAL(clicked()), SLOT(percentOp()));
+    connect(ui->pushButton_changeSign, SIGNAL(clicked()), SLOT(additionalOps()));
+    connect(ui->pushButton_dot, SIGNAL(clicked()), SLOT(additionalOps()));              // in one container (enum)
+    connect(ui->pushButton_percent, SIGNAL(clicked()), SLOT(additionalOps()));
 
     connect(ui->pushButton_equal, SIGNAL(clicked()), SLOT(equalOp()));
+
 
 }
 
@@ -45,12 +44,12 @@ void MainWindow::digits_numbers()
 {
     QPushButton* button = (QPushButton*)sender();
 
-    ui->statusBar->showMessage(QString::number(ui->resultShow->text().size(), 'g', 15));
+    ui->statusBar->showMessage(QString::number(ui->finalResult->text().size(), 'g', 15));
 
-    double input_numbers = (ui->resultShow->text() + button->text()).toDouble();
+    double input_numbers = (ui->finalResult->text() + button->text()).toDouble();
     QString digits_to_str = QString::number(input_numbers, 'g', 15);
 
-    ui->resultShow->setText(digits_to_str);
+    ui->finalResult->setText(digits_to_str);
 }
 
 void MainWindow::clearAll()
@@ -61,58 +60,58 @@ void MainWindow::clearAll()
 
 void MainWindow::backspace()
 {
-    QString str = ui->resultShow->text();
-    if(str.size() == 1)
+    QString str = ui->finalResult->text();
+    if(str.size() == 1 || (str.size() == 2 && str.contains('-')))
     {
-        ui->resultShow->setText("0");
+        ui->finalResult->setText("0");
     }
     else
     {
-        if(str.size() >= 15)
-        {
-            double input_number = str.toDouble();
-
-            ui->statusBar->showMessage(QString::number(input_number, 'g', 15));
-        }
-        else
-        {
-            ui->resultShow->setText(str.remove(str.size() - 1, 1));
-        }
-
+        str.chop(1);
+        ui->finalResult->setText(str);
     }
 }
 
-void MainWindow::binaryOp()
+void MainWindow::mathOps()
 {
+    QPushButton* button = (QPushButton*) sender();
 
+    button->setChecked(true);
 }
 
-void MainWindow::multipleOp()
+void MainWindow::additionalOps()
 {
+    QPushButton* button = (QPushButton*) sender();
 
-}
-
-void MainWindow::changeSign()
-{
-    double input_number = ui->resultShow->text().toDouble();
-    ui->resultShow->setText(QString::number(input_number * (-1), 'g', 15));
-}
-
-void MainWindow::commaOp()
-{
-    if(!ui->resultShow->text().contains("."))
+    double input_number = ui->finalResult->text().toDouble();
+    if (button->text() == "+/-")
     {
-        ui->resultShow->setText(ui->resultShow->text() + ".");
+        ui->finalResult->setText(QString::number(input_number * (-1), 'g', 15));
     }
-}
-
-void MainWindow::percentOp()
-{
-    double input_number = ui->resultShow->text().toDouble();
-    ui->resultShow->setText(QString::number(input_number * 0.01, 'g', 15));
+    else if (button->text() == ".")
+    {
+        if(!ui->finalResult->text().contains("."))
+        {
+            ui->finalResult->setText(ui->finalResult->text() + ".");
+        }
+    } else if (button->text() == "%")
+    {
+        ui->finalResult->setText(QString::number(input_number * 0.01, 'g', 15));
+    }
 }
 
 void MainWindow::equalOp()
 {
 
+}
+
+void MainWindow::displayOnLabel()
+{
+    QPushButton* button = (QPushButton*) sender();
+
+    if (ui->resultShow->text().isEmpty())
+    {
+        ui->resultShow->setText(ui->finalResult->text() + " " + button->text() + " ");
+        ui->finalResult->setText("0");
+    }
 }
