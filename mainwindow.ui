@@ -71,7 +71,7 @@ border-color: rgb(252, 237, 218);
 }</string>
       </property>
       <property name="text">
-       <string>0</string>
+       <string/>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -108,6 +108,9 @@ border: none;
       </property>
       <property name="text">
        <string>0</string>
+      </property>
+      <property name="maxLength">
+       <number>14</number>
       </property>
       <property name="alignment">
        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
