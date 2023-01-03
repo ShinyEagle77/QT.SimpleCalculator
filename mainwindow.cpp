@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+double source_number = 0;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -32,7 +34,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->pushButton_equal, SIGNAL(clicked()), SLOT(equalOp()));
 
-
+    ui->pushButton_plus->setCheckable(true);
+    ui->pushButton_minus->setCheckable(true);
+    ui->pushButton_divide->setCheckable(true);
+    ui->pushButton_multiple->setCheckable(true);
 }
 
 MainWindow::~MainWindow()
@@ -44,12 +49,35 @@ void MainWindow::digits_numbers()
 {
     QPushButton* button = (QPushButton*)sender();
 
-    ui->statusBar->showMessage(QString::number(ui->finalResult->text().size(), 'g', 15));
+   //  ui->statusBar->showMessage(QString::number(ui->finalResult->text().size(), 'g', 15));
 
-    double input_numbers = (ui->finalResult->text() + button->text()).toDouble();
-    QString digits_to_str = QString::number(input_numbers, 'g', 15);
+    if(ui->finalResult->text() == "0")
+    {
+        double input_numbers = (ui->finalResult->text() + button->text()).toDouble();
+        QString digits_to_str = QString::number(input_numbers, 'g', 15);
+        ui->finalResult->setText(digits_to_str);
+    }
+    else
+    {
+        ui->finalResult->setText(ui->finalResult->text() + button->text());
+    }
+}
 
-    ui->finalResult->setText(digits_to_str);
+void MainWindow::mathOps()
+{
+    QPushButton* button = (QPushButton*) sender();
+
+    source_number = ui->finalResult->text().toDouble();
+
+    button->setChecked(true);
+}
+
+void MainWindow::equalOp()
+{
+    if (ui->pushButton_plus->isChecked())
+    {
+
+    }
 }
 
 void MainWindow::clearAll()
@@ -72,13 +100,6 @@ void MainWindow::backspace()
     }
 }
 
-void MainWindow::mathOps()
-{
-    QPushButton* button = (QPushButton*) sender();
-
-    button->setChecked(true);
-}
-
 void MainWindow::additionalOps()
 {
     QPushButton* button = (QPushButton*) sender();
@@ -94,16 +115,14 @@ void MainWindow::additionalOps()
         {
             ui->finalResult->setText(ui->finalResult->text() + ".");
         }
-    } else if (button->text() == "%")
+    }
+    else if (button->text() == "%")
     {
         ui->finalResult->setText(QString::number(input_number * 0.01, 'g', 15));
     }
 }
 
-void MainWindow::equalOp()
-{
 
-}
 
 void MainWindow::displayOnLabel()
 {
