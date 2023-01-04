@@ -20,12 +20,17 @@ public slots:
     void mathOps();
     void additionalOps();
 
-    void equalOp();
+    QString equalOp();
 
     void backspace();
     void clearAll();
 
+    QString removeZeros(QString num);
     void displayOnLabel();
+
+    double getFirstNum();
+    double getSecondNum();
+    QString getSign();
 
 private:
     Ui::MainWindow *ui;

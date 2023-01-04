@@ -1,8 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-double source_number = 0;
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -23,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton_ac, SIGNAL(clicked()), SLOT(clearAll()));
     connect(ui->pushButton_backspace, SIGNAL(clicked()), SLOT(backspace()));
 
-    connect(ui->pushButton_plus, SIGNAL(clicked()), SLOT(displayOnLabel()));
+    connect(ui->pushButton_plus, SIGNAL(clicked()), SLOT(mathOps()));
     connect(ui->pushButton_minus, SIGNAL(clicked()), SLOT(mathOps()));
     connect(ui->pushButton_multiple, SIGNAL(clicked()), SLOT(mathOps()));               // in one container (enum)
     connect(ui->pushButton_divide, SIGNAL(clicked()), SLOT(mathOps()));
@@ -36,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->pushButton_plus->setCheckable(true);
     ui->pushButton_minus->setCheckable(true);
-    ui->pushButton_divide->setCheckable(true);
+    ui->pushButton_divide->setCheckable(true);                                          // in one container (enum)
     ui->pushButton_multiple->setCheckable(true);
 }
 
@@ -48,8 +46,6 @@ MainWindow::~MainWindow()
 void MainWindow::digits_numbers()
 {
     QPushButton* button = (QPushButton*)sender();
-
-   //  ui->statusBar->showMessage(QString::number(ui->finalResult->text().size(), 'g', 15));
 
     if(ui->finalResult->text() == "0")
     {
@@ -63,26 +59,76 @@ void MainWindow::digits_numbers()
     }
 }
 
-void MainWindow::mathOps()
+void MainWindow::mathOps() // to look up on this
 {
     QPushButton* button = (QPushButton*) sender();
+    QString temp = ui->resultShow->text();
 
-    source_number = ui->finalResult->text().toDouble();
+    if (temp.isEmpty())
+    {
+        displayOnLabel();
+    }
+    else
+    {
+        if(getSign() != button->text())
+        {
+            if(getSign() == "=")
+            {
+                displayOnLabel();
+            }
+            else
+            {
+                ui->resultShow->setText(temp.left(temp.length() - 2) + button->text() + " ");
+            }
 
-    button->setChecked(true);
+        }
+        else
+        {
+            ui->resultShow->setText(equalOp() + " " + button->text());
+        }
+    }
 }
 
-void MainWindow::equalOp()
+QString MainWindow::equalOp() // to look up
 {
-    if (ui->pushButton_plus->isChecked())
-    {
+    QString entry = ui->finalResult->text(),
+            temp = ui->resultShow->text();
 
+    if (!temp.isEmpty())
+    {
+        double  first_num = getFirstNum(),
+                second_num = getSecondNum();
+        QString sign = getSign();
+
+        qDebug() << "first_num is " << first_num << Qt::endl << "second num is " << second_num << Qt::endl << "Sign: " << sign << Qt::endl;
+
+        if (sign == '+')
+        {
+            entry = QString::number(first_num + second_num);
+        }
+        else if (sign == '-')
+        {
+            entry = QString::number(second_num - first_num);
+        }
+        else if (sign == '*')
+        {
+            entry = QString::number(first_num * second_num);
+        }
+        else if(sign == '/')
+        {
+            entry = QString::number(second_num / first_num);
+        }
+
+        ui->resultShow->setText(temp + QString::number(first_num) + " =");
+
+        ui->finalResult->setText(entry);
+        return entry;
     }
 }
 
 void MainWindow::clearAll()
 {
-    ui->resultShow->setText("0");
+    ui->resultShow->setText("");
     ui->finalResult->setText("0");
 }
 
@@ -122,15 +168,58 @@ void MainWindow::additionalOps()
     }
 }
 
+double MainWindow::getFirstNum()
+{
+    if(ui->finalResult->text().contains('.'))
+    {
+        qDebug() << ("FirstNumDouble: " + QString::number(ui->finalResult->text().toDouble()));
+        return ui->finalResult->text().toDouble();
+    }
+    else
+    {
+        qDebug() << ("FirstNumInt: " + QString::number(ui->finalResult->text().toInt()));
+        return ui->finalResult->text().toInt();
+    }
+}
 
+double MainWindow::getSecondNum()
+{
+    QString labelText = ui->resultShow->text();
+    if (!labelText.isEmpty())
+    {
+        QString temp = labelText.split(" ")[0];
+        bool isFloat = temp.contains(".");
 
-void MainWindow::displayOnLabel()
+        qDebug() << ("SecondNumIs: " + temp);
+        return isFloat ? temp.toDouble() : temp.toInt();
+    }
+    return 0;
+}
+
+QString MainWindow::getSign()
+{
+    QString labelText = ui->resultShow->text();
+    if(!labelText.isEmpty())
+    {
+        return labelText.split(" ")[1];
+    }
+    return " ";
+}
+
+QString MainWindow::removeZeros(QString num)
+{
+    QString n = QString::number(num.toDouble());
+    return (n.right(2) == ".0") ? n.left(n.size() - 2) : n;
+}
+
+void MainWindow::displayOnLabel() // check this out
 {
     QPushButton* button = (QPushButton*) sender();
+    QString clear_text = removeZeros(ui->finalResult->text());
 
-    if (ui->resultShow->text().isEmpty())
+    if (ui->resultShow->text().isEmpty() || getSign() == "=")
     {
-        ui->resultShow->setText(ui->finalResult->text() + " " + button->text() + " ");
+        ui->resultShow->setText(clear_text + " " + button->text() + " ");
         ui->finalResult->setText("0");
     }
 }
