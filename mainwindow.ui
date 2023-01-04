@@ -57,7 +57,7 @@ background-color: qlineargradient(spread:pad, x1:0.953944, y1:0.977, x2:0, y2:0,
       </property>
       <property name="styleSheet">
        <string notr="true">QLabel {
-	color: rgb(231, 231, 231);
+	color: rgb(210,210,210);
 
 background-color: qlineargradient(spread:pad, x1:0.602324, y1:0.727, x2:0, y2:0, stop:0 rgba(22, 161, 255, 0), stop:1 rgba(50, 255, 255, 0));
 
