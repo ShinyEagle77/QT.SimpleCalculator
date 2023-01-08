@@ -1,6 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+
+// MAKE OTHER CLASS FOR CALCULATOR WITH PRIVATE METHODS
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -62,6 +65,7 @@ void MainWindow::digits_numbers()
 void MainWindow::mathOps() // to look up on this
 {
     QPushButton* button = (QPushButton*) sender();
+    qDebug() <<"INPUT BUTTON: " + button->text() + " ";
     QString temp = ui->resultShow->text();
 
     if (temp.isEmpty())
@@ -70,59 +74,70 @@ void MainWindow::mathOps() // to look up on this
     }
     else
     {
+        qDebug() << "IN MATH: " << " " + getSign() + " | " + button->text() + " ";
         if(getSign() != button->text())
         {
             if(getSign() == "=")
             {
+                qDebug() << "CASE A" << Qt::endl;
                 displayOnLabel();
             }
             else
             {
-                ui->resultShow->setText(temp.left(temp.length() - 2) + button->text() + " ");
+                qDebug() << "CASE B" << Qt::endl;
+                ui->resultShow->setText(temp.left(temp.length() - 2) + " " + button->text() + " "); // rework here
             }
 
         }
         else
         {
-            ui->resultShow->setText(equalOp() + " " + button->text());
+            qDebug() << "CASE C" << Qt::endl;
+            ui->resultShow->setText(equalOp() + " " + button->text() + " ");
         }
     }
 }
 
 QString MainWindow::equalOp() // to look up
 {
+    QPushButton* button = (QPushButton*) sender();
+    qDebug() << "EQUALOP CALLED WITH " + button->text() + " ";
     QString entry = ui->finalResult->text(),
-            temp = ui->resultShow->text();
+            temp = ui->resultShow->text(),
+            result;
 
     if (!temp.isEmpty())
     {
-        double  first_num = getFirstNum(),
-                second_num = getSecondNum();
+        double first_num = getFirstNum().toDouble(),
+               second_num = getSecondNum().toDouble();
         QString sign = getSign();
 
-        qDebug() << "first_num is " << first_num << Qt::endl << "second num is " << second_num << Qt::endl << "Sign: " << sign << Qt::endl;
+        qDebug() << "fnum: " << first_num << " | snum: " << second_num << " | sign: " << sign;
 
         if (sign == '+')
         {
-            entry = QString::number(first_num + second_num);
+            qDebug() << "OP + CALL";
+            result = QString::number(first_num + second_num);
         }
         else if (sign == '-')
         {
-            entry = QString::number(second_num - first_num);
+            qDebug() << "OP - CALL";
+            result = QString::number(second_num - first_num);
         }
-        else if (sign == '*')
+        else if (sign == 'x')
         {
-            entry = QString::number(first_num * second_num);
+            qDebug() << "OP * CALL";
+            result = QString::number(first_num * second_num);
         }
         else if(sign == '/')
         {
-            entry = QString::number(second_num / first_num);
+            qDebug() << "OP / CALL";
+            result = QString::number(second_num / first_num);
         }
 
-        ui->resultShow->setText(temp + QString::number(first_num) + " =");
+        ui->resultShow->setText(temp + removeZeros(entry) + " = ");
 
-        ui->finalResult->setText(entry);
-        return entry;
+        ui->finalResult->setText(removeZeros(result));
+        return result;
     }
 }
 
@@ -130,6 +145,7 @@ void MainWindow::clearAll()
 {
     ui->resultShow->setText("");
     ui->finalResult->setText("0");
+    qDebug() << " ------------------ CLEAR ------------------ " << Qt::endl;
 }
 
 void MainWindow::backspace()
@@ -168,21 +184,13 @@ void MainWindow::additionalOps()
     }
 }
 
-double MainWindow::getFirstNum()
+QVariant MainWindow::getFirstNum()
 {
-    if(ui->finalResult->text().contains('.'))
-    {
-        qDebug() << ("FirstNumDouble: " + QString::number(ui->finalResult->text().toDouble()));
-        return ui->finalResult->text().toDouble();
-    }
-    else
-    {
-        qDebug() << ("FirstNumInt: " + QString::number(ui->finalResult->text().toInt()));
-        return ui->finalResult->text().toInt();
-    }
+    QString final_text = ui->finalResult->text();
+    return final_text.contains('.') ? final_text.toDouble() : final_text.toInt();
 }
 
-double MainWindow::getSecondNum()
+QVariant MainWindow::getSecondNum()
 {
     QString labelText = ui->resultShow->text();
     if (!labelText.isEmpty())
@@ -190,7 +198,6 @@ double MainWindow::getSecondNum()
         QString temp = labelText.split(" ")[0];
         bool isFloat = temp.contains(".");
 
-        qDebug() << ("SecondNumIs: " + temp);
         return isFloat ? temp.toDouble() : temp.toInt();
     }
     return 0;
@@ -206,10 +213,13 @@ QString MainWindow::getSign()
     return " ";
 }
 
-QString MainWindow::removeZeros(QString num)
+QString MainWindow::removeZeros(const QVariant& num)
 {
-    QString n = QString::number(num.toDouble());
-    return (n.right(2) == ".0") ? n.left(n.size() - 2) : n;
+    QString n = QString::number(num.toFloat());
+    if (n.endsWith(".0"))
+        return n.replace(".0", "");
+    else
+        return n;
 }
 
 void MainWindow::displayOnLabel() // check this out
