@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QVariant>
+#include <QString>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,11 +28,11 @@ public slots:
     void backspace();
     void clearAll();
 
-    QString removeZeros(QString num);
+    QString removeZeros(const QVariant& num);
     void displayOnLabel();
 
-    double getFirstNum();
-    double getSecondNum();
+    QVariant getFirstNum();
+    QVariant getSecondNum();
     QString getSign();
 
 private:

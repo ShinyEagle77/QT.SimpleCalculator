@@ -996,7 +996,6 @@ QPushButton:pressed{
     </item>
    </layout>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionStyle_1">
    <property name="text">
     <string>Style 1</string>
